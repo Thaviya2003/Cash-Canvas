@@ -1,0 +1,159 @@
+/* Gilded Vases Specific Styles */
+
+.vases-header {
+    margin-top: 80px;
+    padding: 6rem 2rem;
+    background: #fdfcf9; /* Very light champagne */
+    border-bottom: 1px solid #eee;
+}
+
+.header-split {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-text {
+    max-width: 600px;
+}
+
+.header-text h1 {
+    font-size: 4rem;
+    margin: 1rem 0;
+}
+
+.header-text p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.header-stats {
+    display: flex;
+    gap: 4rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat span {
+    font-size: 2.5rem;
+    display: block;
+}
+
+.stat p {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+}
+
+/* Vases Grid */
+.vases-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+
+.vases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 5rem 4rem;
+}
+
+.vase-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.vase-img {
+    position: relative;
+    height: 550px;
+    background: #f7f7f7;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.vase-card.tall .vase-img {
+    height: 650px; /* Varied height for a gallery feel */
+}
+
+.vase-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.vase-card:hover .vase-img img {
+    transform: scale(1.08);
+}
+
+.vase-badges {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.limited {
+    background: var(--black);
+    color: var(--gold);
+    padding: 5px 15px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--gold);
+}
+
+/* Vase Content */
+.vase-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.description {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.vase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1.5rem;
+}
+
+.vase-footer .price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.view-btn {
+    text-decoration: none;
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--gold);
+    transition: all 0.3s;
+}
+
+.view-btn:hover {
+    color: var(--gold);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .header-split { flex-direction: column; text-align: center; }
+    .header-stats { margin-top: 3rem; }
+    .vases-grid { grid-template-columns: 1fr; }
+    .vase-img { height: 450px !important; }
+}

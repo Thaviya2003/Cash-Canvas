@@ -1,0 +1,158 @@
+/* Arrivals Page Specific Styles */
+
+.arrivals-container {
+    padding-top: 120px; /* Space for fixed navbar */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.breadcrumbs {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 1rem;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Layout */
+.shop-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+}
+
+/* Filter Sidebar */
+.filter-sidebar h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group {
+    margin-bottom: 3rem;
+}
+
+.filter-group ul {
+    list-style: none;
+}
+
+.filter-group li {
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.filter-group input[type="checkbox"], 
+.filter-group input[type="radio"] {
+    accent-color: var(--gold);
+    margin-right: 10px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    transition: var(--transition);
+}
+
+.product-image {
+    position: relative;
+    height: 400px;
+    background: #f9f9f9;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gold);
+    color: white;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.quick-add {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.product-card:hover .quick-add {
+    bottom: 0;
+}
+
+/* Info Styling */
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.product-info .category {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.product-info .price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--black);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+    .filter-sidebar {
+        display: none; /* Hide filters on mobile for simplicity */
+    }
+}
