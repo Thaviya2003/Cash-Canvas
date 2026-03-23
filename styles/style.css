@@ -30,7 +30,7 @@ h1, h2, h3, .serif-title {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
     padding: 1.2rem 2rem;
@@ -155,7 +155,7 @@ h1, h2, h3, .serif-title {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     margin-bottom: 2rem;
     color: rgb(255, 255, 255);
 }
