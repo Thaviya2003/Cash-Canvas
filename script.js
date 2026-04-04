@@ -75,4 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.style.boxShadow = 'none';
         }
     });
+    
+    // --- 4. Simple Cart Feedback ---
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        btn.style.background = '#2ecc71'; // Green for success
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-plus"></i>';
+            btn.style.background = 'var(--gold)';
+        }, 2000);
+    });
+});
+
+    // Remove Item Animation
+document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const item = this.closest('.cart-item');
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(20px)';
+        setTimeout(() => item.remove(), 400);
+    });
+});
 });

@@ -454,6 +454,555 @@ a.product-card {
     transition: var(--transition);
 }
 
+
+/* =========================================
+   ABOUT US PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* About Hero Override */
+.about-hero {
+    height: 60vh; /* Shorter than the home page hero */
+    background: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070') center/cover no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+/* Story Section */
+.story-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem;
+    text-align: center;
+}
+
+.story-text h3 {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.story-text p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.story-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Values Section */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.value-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.value-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.value-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.value-card:hover .value-icon {
+    transform: scale(1.1) translateY(-5px);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Shop Specific Styles --- */
+.shop-header {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+}
+
+.shop-header h1 {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.shop-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Sidebar & Filters */
+.shop-sidebar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 8px;
+    position: sticky;
+    top: 100px;
+}
+
+.filter-group {
+    margin-bottom: 2.5rem;
+}
+
+.filter-group h4 {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.filter-group ul {
+    list-style: none;
+}
+
+.filter-group li {
+    margin-bottom: 10px;
+}
+
+/* Custom Checkboxes */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0; left: 0;
+    height: 18px; width: 18px;
+    background-color: transparent;
+    border: 1px solid var(--gold);
+}
+
+.container:hover input ~ .checkmark {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.container input:checked ~ .checkmark {
+    background-color: var(--gold);
+}
+
+/* Price Slider */
+.price-slider {
+    width: 100%;
+    accent-color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Glass Select Dropdown */
+.glass-select {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* Product Card Enhancements */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold-dark);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    bottom: -50px;
+    right: 15px;
+    background: var(--gold);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.product-card:hover .add-to-cart-btn {
+    bottom: 15px;
+    opacity: 1;
+}
+
+/* --- Category Page Specifics --- */
+.category-hero {
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax energy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.men-hero {
+    /* Utilizing a high-end texture for the Gentlemen's collection */
+    background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop');
+}
+
+.subtitle {
+    display: block;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.category-header h2 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* Enhancing Product Grid for Category Focus */
+.product-grid {
+    gap: 3rem; /* More breathing room for luxury items */
+}
+
+/* Hover refinement for Men's items */
+.product-card.glass-effect:hover {
+    border-color: var(--gold);
+    transform: translateY(-12px); /* Slightly more dramatic lift */
+}
+
+/* --- Ladies Page Specifics --- */
+.ladies-hero {
+    /* A soft, aesthetic jewelry/lifestyle background */
+    background-image: url('https://images.unsplash.com/photo-1515562141207-7a18b5ce7142?q=80&w=2070&auto=format&fit=crop');
+    background-position: center 30%; /* Focus on the aesthetic elements */
+}
+
+/* Enhancing the glass effect for jewelry display */
+.product-card.glass-effect {
+    /* Slightly more transparency for a "lighter" feel on this page */
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.light-mode .product-card.glass-effect {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Smooth fade-in for product text */
+.product-info h4 {
+    transition: color 0.3s ease;
+}
+
+.product-card:hover .product-info h4 {
+    color: var(--gold);
+}
+
+/* --- Home Decor Specifics --- */
+.decor-hero {
+    background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2064&auto=format&fit=crop');
+    background-position: center 40%;
+}
+
+/* Specific product image adjustment for Decor 
+   (Since decor items often have different aspect ratios) */
+.decor-hero .hero-content h1 {
+    text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Luxury border highlight for home items in dark mode */
+.product-card.glass-effect:hover {
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+}
+
+/* Light mode refinement for a "clean house" feel */
+.light-mode .decor-hero .hero-overlay {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Cart Page Styles --- */
+.cart-section {
+    padding-top: 150px;
+    min-height: 80vh;
+}
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+.cart-item-img {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.item-category {
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.item-price {
+    font-weight: 500;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--glass-border);
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.qty-btn:hover {
+    color: var(--gold);
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.remove-item:hover {
+    color: #ff4d4d;
+}
+
+/* Summary Sidebar */
+.cart-summary {
+    padding: 2rem;
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.cart-summary h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.summary-row.total {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.checkout-btn:hover {
+    background: var(--gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.secure-note {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+    .cart-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-hero {
+        height: 50vh;
+    }
+    .category-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+    .shop-sidebar {
+        position: relative;
+        top: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .filter-group {
+        flex: 1;
+        min-width: 150px;
+        margin-bottom: 0;
+    }
+}
+
+/* Mobile Adjustments for About Page */
+@media (max-width: 768px) {
+    .story-container {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .story-text h3 {
+        font-size: 1.6rem;
+    }
+}
+
 /* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
     .nav-links {
