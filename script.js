@@ -1,101 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. Theme Toggle Logic ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const navLogo = document.getElementById('nav-logo');
-    
-    // Define your image paths here
-    const darkLogo = 'assets/logo-white.png';
-    const lightLogo = 'assets/logo-black.png';
+    const navItems = document.querySelectorAll('.nav-item');
+    const logoLink = document.querySelector('.logo-link');
+    const spotlight = document.querySelector('.nav-spotlight');
+    const page = document.body.getAttribute("data-page");
 
-    // Function to update logo based on theme
-    const updateLogo = (isLight) => {
-        if (isLight) {
-            navLogo.src = lightLogo;
-        } else {
-            navLogo.src = darkLogo;
+    function moveSpotlight(element) {
+        const rect = element.getBoundingClientRect();
+        const navRect = element.closest('.navbar').getBoundingClientRect();
+        
+        spotlight.style.opacity = '1';
+        spotlight.style.width = `${rect.width}px`;
+        spotlight.style.left = `${rect.left - navRect.left}px`;
+        
+        navItems.forEach(item => item.classList.remove('active'));
+        if (element.parentElement.classList.contains('nav-item')) {
+            element.parentElement.classList.add('active');
         }
-    };
-    
-    // Check local storage for theme preference
-    const currentTheme = localStorage.getItem('theme');
-    
-    if (currentTheme === 'light') {
-        body.classList.add('light-mode');
-        themeToggle.checked = true;
-        updateLogo(true);
-    } else {
-        updateLogo(false);
     }
-    
-    // Listen for toggle changes
-    themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
-            updateLogo(true);
-        } else {
-            body.classList.remove('light-mode');
-            localStorage.setItem('theme', 'dark');
-            updateLogo(false);
+
+    // === INITIAL STATE CONTROL ===
+
+    if (logoLink) {
+        setTimeout(() => moveSpotlight(logoLink), 200);
+    }
+
+    // Move to correct page tab AFTER load (smooth effect)
+    setTimeout(() => {
+        if (page === "about") {
+            const aboutLink = document.querySelector('a[href="about-us.html"]');
+            if (aboutLink) moveSpotlight(aboutLink);
         }
+    }, 1000);
+
+    // Click behavior (unchanged)
+    navItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+        link.addEventListener('click', (e) => {
+
+            if (item.classList.contains('has-dropdown')) {
+                e.preventDefault();
+            }
+
+            moveSpotlight(link);
+        });
     });
 
-    // --- 2. Scroll Reveal Animations ---
-    const reveals = document.querySelectorAll('.reveal');
+    logoLink.addEventListener('click', () => {
+        moveSpotlight(logoLink);
+    });
 
-    const revealOptions = {
-        threshold: 0.15,
+    // Scroll animations (UNCHANGED)
+    const observerOptions = {
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('active');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
                 observer.unobserve(entry.target);
             }
         });
-    }, revealOptions);
+    }, observerOptions);
 
-    reveals.forEach(reveal => {
-        revealOnScroll.observe(reveal);
-    });
+    document.querySelectorAll('.slide-up, .fade-in').forEach(el => observer.observe(el));
 
-    // --- 3. Navbar Scroll Effect ---
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+    // Resize fix
+    window.addEventListener('resize', () => {
+        const active = document.querySelector('.nav-item.active .nav-link');
+        if (active) {
+            moveSpotlight(active);
         } else {
-            navbar.style.boxShadow = 'none';
+            moveSpotlight(logoLink);
         }
     });
-    
-    // --- 4. Simple Cart Feedback ---
-document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        btn.innerHTML = '<i class="fas fa-check"></i>';
-        btn.style.background = '#2ecc71'; // Green for success
-        setTimeout(() => {
-            btn.innerHTML = '<i class="fas fa-plus"></i>';
-            btn.style.background = 'var(--gold)';
-        }, 2000);
-    });
-});
-
-    // Remove Item Animation
-document.querySelectorAll('.remove-item').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const item = this.closest('.cart-item');
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(20px)';
-        setTimeout(() => item.remove(), 400);
-    });
-});
 });
