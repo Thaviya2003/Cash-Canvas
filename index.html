@@ -3,130 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cash Canvas | Affordable Luxury</title>
+    <title>Cash Canvas | Where Wealth Meets Art</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-fade-in" data-page="home">
 
     <nav class="navbar">
-        <a href="index.html" class="logo-link">
-            <img src="assets/logo-black.png" id="nav-logo" alt="Cash Canvas" class="logo-img">
-        </a>
-        
-        <ul class="nav-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#homedecor">Home Decor</a></li>
-        </ul>
-        <div class="nav-actions">
-            <label class="theme-switch" aria-label="Toggle Dark/Light Mode">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider round">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </span>
-            </label>
-            <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+        <div class="nav-background-gradient"></div>
+        <div class="nav-spotlight"></div>
+
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo-white.png" alt="Cash Canvas" class="main-logo">
+            </a>
         </div>
+
+        <ul class="nav-center">
+            <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link">Shop</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Money Art</a></li>
+                    <li><a href="#">Home Decor</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Luxury Furniture</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="assets/262813.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
-            <h1>Redefining Elegance in Sri Lanka</h1>
-            <p>Discover our curated collection of affordable luxury leather goods, exquisite jewelry, and timeless home decor.</p>
-            <a href="#categories" class="btn-primary">Explore Collections</a>
-        </div>
-    </section>
-
-    <section id="categories" class="categories section-padding">
-        <div class="section-title reveal">
-            <h2>Our Collections</h2>
-            <div class="line"></div>
-        </div>
-        <div class="category-grid">
-            <div class="category-card reveal">
-                <div class="card-overlay"></div>
-                <h3>Gentlemen</h3>
-                <p>Leather Wallets, Watches & Office Bags</p>
-                <a href="men.html" class="btn-secondary">Shop Men</a>
-            </div>
-            <div class="category-card reveal">
-                <div class="card-overlay"></div>
-                <h3>Ladies</h3>
-                <p>Luxury Handbags, Rings & Jewelry</p>
-                <a href="ladies.html" class="btn-secondary">Shop Women</a>
-            </div>
-            <div class="category-card reveal">
-                <div class="card-overlay"></div>
-                <h3>Sanctuary</h3>
-                <p>Crafty Pots, Wallpapers & Decor</p>
-                <a href="home-decor.html" class="btn-secondary">Shop Home</a>
+    <header class="hero slide-up">
+        <div class="hero-content">
+            <h1 class="hero-title">Curating Comfort <br><span class="gold-text">Crafting Class</span></h1>
+            <p class="hero-subtitle">Luxury Home Decor • Money Art • Timeless Elegance. <br>Exclusively curated for the modern lifestyle.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-primary gold-btn">Shop Now</a>
+                <a href="#" class="btn-text">Discover Collection →</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section id="featured" class="featured section-padding">
-        <div class="section-title reveal">
-            <h2>Signature Pieces</h2>
-            <div class="line"></div>
+    <div class="trust-bar fade-in">
+        <div class="marquee">
+            <span>ISLAND-WIDE DELIVERY • PREMIUM PACKAGING • HAND-CURATED LUXURY • SECURE PAYMENTS • </span>
+            <span>ISLAND-WIDE DELIVERY • PREMIUM PACKAGING • HAND-CURATED LUXURY • SECURE PAYMENTS • </span>
         </div>
-        <div class="product-grid">
-            <a href="product-page.html" class="product-card glass-effect reveal">
-                <div class="img-placeholder">
-                    <img src="https://www.all-ett.com/cdn/shop/files/Leather-ID-Wallet-Allett-RFID-Blocking-Mens-Wallet-Hazel-Brown-LeatherIDWallet-MensRFIDBlockingSlimWalletbyAllett-min.png?v=1761857745&width=4000" alt="Wallet">
-                </div>
-                <div class="product-info">
-                    <h4>Classic Onyx Leather Wallet</h4>
-                    <p class="price">Rs. 8,500</p>
-                </div>
-            </a>
-            <a href="product-page.html" class="product-card glass-effect reveal">
-                <div class="img-placeholder">
-                    <img src="https://www.shnco.co/cdn/shop/products/beth-cz-thin-ring-single-cz.png?v=1741536828&width=600" alt="Ring">
-                </div>
-                <div class="product-info">
-                    <h4>18k Gold Plated Minimalist Ring</h4>
-                    <p class="price">Rs. 12,000</p>
-                </div>
-            </a>
-            <a href="product-page.html" class="product-card glass-effect reveal">
-                <div class="img-placeholder">
-                    <img src="https://static.vecteezy.com/system/resources/thumbnails/044/812/573/small/a-brown-leather-travel-bag-isolated-on-transparent-background-png.png" alt="Bag">
-                </div>
-                <div class="product-info">
-                    <h4>The Executive Travel Bag</h4>
-                    <p class="price">Rs. 24,500</p>
-                </div>
-            </a>
-            <a href="product-page.html" class="product-card glass-effect reveal">
-                <div class="img-placeholder">
-                    <img src="https://static.vecteezy.com/system/resources/previews/047/832/105/non_2x/white-ceramic-vase-with-gold-accents-free-png.png" alt="Decor">
-                </div>
-                <div class="product-info">
-                    <h4>Golden Aura Abstract Pot</h4>
-                    <p class="price">Rs. 6,200</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Cash Canvas.</div>
-            <p>Elevating everyday life with affordable luxury, delivered across Sri Lanka.</p>
-        </div>
+    <footer class="footer">
         <div class="footer-bottom">
-            <p>&copy; 2026 Cash Canvas. All rights reserved.</p>
+            <p>&copy; 2026 Cash Canvas • Colombo, Sri Lanka • Built by Mayaruue Technologies</p>
         </div>
     </footer>
 
