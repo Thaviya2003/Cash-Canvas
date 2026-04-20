@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const aboutLink = document.querySelector('a[href="about-us.html"]');
             if (aboutLink) moveSpotlight(aboutLink);
         }
+        if (page === "shop") {
+            const shopLink = document.querySelector('a[href="shop.html"]');
+            if (shopLink) moveSpotlight(shopLink);
+        }
     }, 1000);
 
     // Click behavior (unchanged)
