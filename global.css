@@ -29,7 +29,7 @@ body {
     to { opacity: 1; filter: blur(0); }
 }
 
-/* --- Navigation & Spotlight --- */
+/* --- Navigation --- */
 .navbar {
     position: fixed;
     top: 0; width: 100%;
@@ -38,6 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    transition: var(--transition-premium);
 }
 
 .nav-background-gradient {
@@ -48,20 +49,36 @@ body {
     pointer-events: none;
 }
 
-.nav-spotlight {
-    position: absolute;
-    top: 0; height: 65px; width: 0;
-    background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.3) 0%, transparent 75%);
-    border-top: 2px solid var(--accent-gold);
-    pointer-events: none;
-    transition: left 0.6s cubic-bezier(0.65, 0, 0.35, 1), width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-    opacity: 0;
-}
-
 .main-logo { height: 45px; transition: var(--transition-premium); display: block; }
 .logo-link:hover .main-logo { filter: brightness(1.2); transform: scale(1.02); }
 
 .nav-center { display: flex; gap: 40px; list-style: none; }
+
+.nav-item {
+    position: relative;
+}
+
+/* Pure CSS Spotlight Animation */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: -25px; /* Aligns perfectly with top of navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    height: 65px; 
+    width: 140%; /* Creates the spread */
+    background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.3) 0%, transparent 75%);
+    border-top: 2px solid var(--accent-gold);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.nav-item.active::before,
+.nav-item:hover::before {
+    opacity: 1;
+}
+
 .nav-link {
     color: var(--text-main);
     text-decoration: none;
@@ -70,19 +87,17 @@ body {
     letter-spacing: 2px;
     padding: 10px 0;
     transition: 0.3s;
+    position: relative;
 }
 
 .nav-item.active .nav-link, .nav-link:hover { color: var(--accent-gold); }
 
 /* --- Footer --- */
-
-
-/* --- Refined Footer --- */
 .footer { 
     padding: 100px 10% 40px; 
     background: #040404; 
     border-top: 1px solid rgba(255,255,255,0.05); 
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-body);
 }
 
 .footer-grid { 
@@ -91,12 +106,11 @@ body {
     gap: 80px; 
 }
 
-/* Logo & Tagline */
 .footer-logo { 
-    height: 50px; /* Adjusted for a rectangular logo */
+    height: 50px;
     width: auto;
     margin-bottom: 25px; 
-    filter: brightness(1.2); /* Makes the logo pop against black */
+    filter: brightness(1.2); 
 }
 
 .footer-tagline {
@@ -107,7 +121,6 @@ body {
     max-width: 300px;
 }
 
-/* Titles */
 .footer-col h4 { 
     color: var(--accent-gold); 
     font-size: 0.75rem; 
@@ -117,7 +130,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Links & Info */
 .footer-col a, .contact-info { 
     display: block; 
     color: var(--text-muted); 
@@ -129,14 +141,11 @@ body {
 
 .footer-col a:hover { 
     color: var(--accent-gold); 
-    transform: translateX(8px); /* Elegant slide effect */
+    transform: translateX(8px); 
 }
 
-.contact-info {
-    margin-bottom: 10px;
-}
+.contact-info { margin-bottom: 10px; }
 
-/* Socials Row */
 .social-links {
     display: flex;
     gap: 20px;
@@ -144,19 +153,17 @@ body {
 }
 
 .social-links a {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    padding-bottom: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
 }
 
-.social-links a:hover {
-    border-bottom: 1px solid var(--accent-gold);
-    transform: translateY(-3px);
-}
+.social-links a:hover { color: #c9a96e; }
 
-/* Footer Bottom */
 .footer-bottom { 
     margin-top: 100px; 
     padding-top: 30px; 
@@ -167,7 +174,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Responsive */
+/* --- Responsive Global Design --- */
 @media (max-width: 992px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -179,6 +186,23 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 5%;
+        flex-direction: column;
+        gap: 15px;
+        background: rgba(0,0,0,0.9);
+    }
+    .nav-center {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-item::before {
+        top: -5px; /* Adjusts the spotlight height for stacked mobile menu */
+    }
+}
+
 @media (max-width: 600px) {
     .footer-grid {
         grid-template-columns: 1fr;
@@ -186,10 +210,29 @@ body {
     .footer-col:first-child {
         grid-column: span 1;
     }
+    .footer {
+        padding: 60px 5% 30px;
+    }
+    .nav-link {
+        font-size: 0.75rem;
+    }
 }
 
-/* --- Animation Classes --- */
-.slide-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.slide-up.appear { opacity: 1; transform: translateY(0); }
-.fade-in { opacity: 0; transition: opacity 1.5s ease; }
-.fade-in.appear { opacity: 1; }
+/* --- CSS-Only Animation Classes (Replaces JS Observer) --- */
+.slide-up { 
+    opacity: 0; 
+    transform: translateY(40px); 
+    animation: slideUpAnim 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+@keyframes slideUpAnim {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { 
+    opacity: 0; 
+    animation: fadeInAnim 1.5s ease forwards;
+    animation-delay: 0.5s;
+}
+@keyframes fadeInAnim {
+    to { opacity: 1; }
+}
