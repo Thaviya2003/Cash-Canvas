@@ -1,0 +1,308 @@
+/* --- Shop Page Variables --- */
+:root {
+    --card-spacing: 40px;
+}
+
+/* --- Shop Header --- */
+.shop-header {
+    padding: 180px 10% 80px;
+    text-align: center;
+    background: radial-gradient(circle at center, #111 0%, var(--bg-dark) 100%);
+}
+
+.pre-title {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.main-title {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.header-description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* --- Category Navigator --- */
+.category-spotlight {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: #0a0a0a;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 25px 0;
+}
+
+.cat-item {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition-premium);
+    position: relative;
+}
+
+.cat-item::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; left: 50%;
+    width: 0; height: 1px;
+    background: var(--accent-gold);
+    transition: var(--transition-premium);
+    transform: translateX(-50%);
+}
+
+.cat-item.active, .cat-item:hover {
+    color: #fff;
+}
+
+.cat-item.active::after {
+    width: 100%;
+}
+
+/* --- Product Gallery (Masonry Feel) --- */
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 40px;
+}
+
+.product-card {
+    position: relative;
+}
+
+/* Tall cards for "Furniture" and "Art" to break the repetitive grid */
+.product-card.tall .card-media {
+    height: 650px;
+}
+
+.card-media {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    backdrop-filter: blur(5px);
+    transition: var(--transition-premium);
+}
+
+.product-card:hover .card-media img {
+    transform: scale(1.08);
+}
+
+.product-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.quick-add {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transform: translateY(20px);
+    transition: var(--transition-premium);
+}
+
+.product-card:hover .quick-add {
+    transform: translateY(0);
+}
+
+/* --- Product Details --- */
+.card-details {
+    padding-top: 25px;
+    text-align: center;
+}
+
+.card-details .label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--accent-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card-details h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.card-details .price {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Cart Icon --- */
+.cart-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-btn:hover {
+    color: var(--accent-gold);
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 992px) {
+    .main-title { font-size: 3rem; }
+    .product-gallery { grid-template-columns: 1fr; }
+    .product-card.tall .card-media, .card-media { height: 500px; }
+    .category-grid { gap: 20px; overflow-x: auto; padding: 20px 5%; justify-content: flex-start; }
+}
+
+/*new*/
+
+/* --- SECTION 1 BASE STYLES --- */
+#section-1.shop-body {
+    background-color: #0a0a0a; /* Deep luxury black */
+    padding: 6rem 2rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+#section-1 .container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Grid Layout matching the reference image */
+#section-1 .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+}
+
+/* --- PRODUCT CARD STYLING --- */
+#section-1 .product-card {
+    background-color: #141414; /* Slightly lighter black for contrast */
+    border: 1px solid #222;
+    border-radius: 4px; /* Keeping it sharp and modern */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    
+    /* Smooth transition for the whole card */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
+}
+
+/* Hover Animations for the Card */
+#section-1 .product-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37; /* Gold border reveal */
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12); /* Subtle gold glow */
+}
+
+/* --- IMAGE STYLING & ANIMATION --- */
+#section-1 .image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Matches the tall, elegant portrait ratio of the reference */
+    overflow: hidden;
+    background-color: #1a1a1a; /* Fallback loading color */
+}
+
+#section-1 .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* Smooth zoom transition */
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Zoom image on card hover */
+#section-1 .product-card:hover .image-wrapper img {
+    transform: scale(1.08);
+}
+
+/* --- TYPOGRAPHY & INFO --- */
+#section-1 .product-info {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#section-1 .product-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f5f5f5; /* Off-white for readability */
+    margin: 0;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+/* Title turns gold on hover */
+#section-1 .product-card:hover .product-title {
+    color: #d4af37; 
+}
+
+#section-1 .product-price {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #d4af37; /* Gold price text */
+    margin: 0;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1024px) {
+    #section-1 .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    #section-1 .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
